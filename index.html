@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AutoTech Mecânica | Revisão e Manutenção Automotiva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1115;
+      --bg-card: #171a21;
+      --bg-input: #1f242e;
+      --border: #2a313d;
+      --primary: #f97316;
+      --primary-hover: #ea580c;
+      --whatsapp: #22c55e;
+      --whatsapp-hover: #16a34a;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(15, 17, 21, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn-top {
+      background: var(--primary);
+      color: #fff !important;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+    }
+
+    .btn-top:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Hero com foto grande */
+    .hero {
+      padding: 64px 0;
+      border-bottom: 1px solid var(--border);
+      background: radial-gradient(circle at top right, rgba(249, 115, 22, 0.14), transparent 50%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(249, 115, 22, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(249, 115, 22, 0.35);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      line-height: 1.15;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      transition: 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--border);
+      color: var(--text);
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .hero-img-box {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-img-box img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-img-caption {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      background: rgba(15, 17, 21, 0.85);
+      backdrop-filter: blur(6px);
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      color: #e5e7eb;
+    }
+
+    /* Sections */
+    section {
+      padding: 64px 0;
+    }
+
+    .section-title {
+      font-size: 1.85rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    /* Serviços Grid com Imagens */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      border-color: rgba(249, 115, 22, 0.55);
+      transform: translateY(-3px);
+    }
+
+    .card-img {
+      width: 100%;
+      height: 185px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-body {
+      padding: 20px 22px 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 16px;
+    }
+
+    .price-tag {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      background: rgba(249, 115, 22, 0.12);
+      padding: 5px 11px;
+      border-radius: 6px;
+    }
+
+    /* Galeria da Estrutura */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      height: 210px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-label {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+      padding: 24px 14px 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    /* Diferenciais */
+    .trust-bar {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .trust-item h4 {
+      font-size: 1.05rem;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .trust-item p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Orçamento Form */
+    .budget-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--primary);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .services-check {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(215px, 1fr));
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--bg-input);
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: 0.2s;
+    }
+
+    .check-item:hover {
+      border-color: var(--primary);
+    }
+
+    .check-item input {
+      width: auto;
+      accent-color: var(--primary);
+    }
+
+    .btn-wpp {
+      width: 100%;
+      background: var(--whatsapp);
+      color: #052e16;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.2s;
+      margin-top: 8px;
+    }
+
+    .btn-wpp:hover {
+      background: var(--whatsapp-hover);
+      color: #fff;
+    }
+
+    /* Localização e Footer */
+    .location-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-img-box img {
+        height: 270px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links a:not(.btn-top) {
+        display: none;
+      }
+      .budget-box {
+        padding: 22px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo">Auto<span>Tech</span> Mecânica</div>
+      <nav class="nav-links">
+        <a href="#servicos">Serviços</a>
+        <a href="#estrutura">Estrutura</a>
+        <a href="#orcamento" class="btn-top">Pedir Orçamento</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero com Imagem -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="badge">Diagnóstico preciso e peças com garantia</span>
+        <h1>Cuidamos do seu carro com <span>transparência</span> e agilidade.</h1>
+        <p>Revisão preventiva, freios, suspensão, troca de óleo e injeção eletrônica. Escolha o serviço abaixo e envie o pedido de orçamento direto no nosso WhatsApp.</p>
+        <div class="hero-actions">
+          <a href="#orcamento" class="btn-primary">Pedir Orçamento Agora</a>
+          <a href="#servicos" class="btn-outline">Ver Serviços</a>
+        </div>
+      </div>
+
+      <div class="hero-img-box">
+        <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?auto=format&fit=crop&w=1000&q=80" alt="Mecânico trabalhando no motor do carro" />
+        <div class="hero-img-caption">
+          🔧 Atendimento técnico especializado — Orçamento aprovado antes de mexer no veículo.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serviços com Fotos -->
+  <section id="servicos">
+    <div class="container">
+      <h2 class="section-title">Principais Serviços</h2>
+      <p class="section-subtitle">Manutenção completa para carros nacionais e importados.</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <img class="card-img" src="https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=800&q=80" alt="Troca de óleo automotivo" />
+          <div class="card-body">
+            <div>
+              <h3>Troca de Óleo e Filtros</h3>
+              <p>Óleo sintético ou semissintético especificado pela montadora + filtro de óleo e check-up de níveis.</p>
+            </div>
+            <span class="price-tag">Orçamento rápido</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card-img" src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=800&q=80" alt="Sistema de freios e disco" />
+          <div class="card-body">
+            <div>
+              <h3>Sistema de Freios</h3>
+              <p>Troca de pastilhas, discos, fluido de freio e revisão completa para sua segurança na pista.</p>
+            </div>
+            <span class="price-tag">Orçamento rápido</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card-img" src="https://images.unsplash.com/photo-1530046339160-ce3e530c7d2f?auto=format&fit=crop&w=800&q=80" alt="Suspensão e manutenção" />
+          <div class="card-body">
+            <div>
+              <h3>Suspensão e Direção</h3>
+              <p>Amortecedores, pivôs, buchas, terminais e eliminação de barulhos ao passar em buracos.</p>
+            </div>
+            <span class="price-tag">Orçamento rápido</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card-img" src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=800&q=80" alt="Diagnóstico eletrônico e scanner" />
+          <div class="card-body">
+            <div>
+              <h3>Injeção e Scanner</h3>
+              <p>Leitura computadorizada de falhas, limpeza de bicos e correção de consumo elevado.</p>
+            </div>
+            <span class="price-tag">Orçamento rápido</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card-img" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=800&q=80" alt="Revisão preventiva automotiva" />
+          <div class="card-body">
+            <div>
+              <h3>Revisão Preventiva</h3>
+              <p>Checklist completo antes de viajar: correias, arrefecimento, bateria, freios e suspensão.</p>
+            </div>
+            <span class="price-tag">Orçamento rápido</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <img class="card-img" src="https://images.unsplash.com/photo-1625047509168-a7026f36de04?auto=format&fit=crop&w=800&q=80" alt="Bateria e sistema elétrico" />
+          <div class="card-body">
+            <div>
+              <h3>Arrefecimento e Bateria</h3>
+              <p>Limpeza do sistema de radiador, aditivo na proporção certa e teste de alternador/bateria.</p>
+            </div>
+            <span class="price-tag">Orçamento rápido</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeria da Estrutura -->
+  <section id="estrutura" style="padding-top: 0;">
+    <div class="container">
+      <h2 class="section-title">Nossa Estrutura</h2>
+      <p class="section-subtitle">Equipamentos modernos e organização para cuidar bem do seu veículo.</p>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=800&q=80" alt="Box de atendimento da oficina" />
+          <div class="gallery-label">Box Equipado e Organizado</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=800&q=80" alt="Ferramentas profissionais" />
+          <div class="gallery-label">Ferramental de Precisão</div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=800&q=80" alt="Inspeção de motor" />
+          <div class="gallery-label">Inspeção Detalhada de Motor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diferenciais -->
+  <section id="diferenciais" class="trust-bar">
+    <div class="container trust-grid">
+      <div class="trust-item">
+        <h4>✅ Orçamento Sem Surpresas</h4>
+        <p>Nada é trocado sem a sua aprovação prévia pelo WhatsApp.</p>
+      </div>
+      <div class="trust-item">
+        <h4>📸 Fotos e Vídeos do Serviço</h4>
+        <p>Mostramos as peças antigas e o andamento direto no seu celular.</p>
+      </div>
+      <div class="trust-item">
+        <h4>🛡️ Garantia em Peças e Mão de Obra</h4>
+        <p>Trabalhamos apenas com marcas de primeira linha e nota fiscal.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Orçamento WhatsApp -->
+  <section id="orcamento">
+    <div class="container">
+      <div class="budget-box">
+        <h2 class="section-title">Orçamento Rápido no WhatsApp</h2>
+        <p class="section-subtitle">Marque os serviços desejados e envie os dados do seu veículo.</p>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nome">Seu Nome</label>
+            <input type="text" id="nome" placeholder="Ex: Carlos Silva" />
+          </div>
+
+          <div class="form-group">
+            <label for="veiculo">Carro / Modelo e Ano</label>
+            <input type="text" id="veiculo" placeholder="Ex: Onix 1.0 2020" />
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="porte">Categoria do Veículo</label>
+            <select id="porte">
+              <option value="Hatch / Sedan">Hatch / Sedan</option>
+              <option value="SUV / Caminhonete">SUV / Caminhonete</option>
+              <option value="Utilitário / Picape">Utilitário / Picape</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="pagamento">Forma de Pagamento Preferida</label>
+            <select id="pagamento">
+              <option value="Pix">Pix</option>
+              <option value="Cartão de Crédito">Cartão de Crédito</option>
+              <option value="Cartão de Débito">Cartão de Débito</option>
+              <option value="Dinheiro">Dinheiro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Serviços Desejados</label>
+          <div class="services-check">
+            <label class="check-item">
+              <input type="checkbox" value="Troca de Óleo e Filtros" />
+              Troca de Óleo
+            </label>
+            <label class="check-item">
+              <input type="checkbox" value="Revisão de Freios" />
+              Freios
+            </label>
+            <label class="check-item">
+              <input type="checkbox" value="Suspensão" />
+              Suspensão
+            </label>
+            <label class="check-item">
+              <input type="checkbox" value="Scanner / Injeção" />
+              Scanner / Injeção
+            </label>
+            <label class="check-item">
+              <input type="checkbox" value="Revisão Completa" />
+              Revisão Completa
+            </label>
+            <label class="check-item">
+              <input type="checkbox" value="Avaliar Barulho / Defeito" />
+              Avaliar Barulho / Defeito
+            </label>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="horario">Quando pretende trazer o carro?</label>
+            <input type="text" id="horario" placeholder="Ex: Amanhã às 09:00" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="observacao">Sintoma ou Observação (opcional)</label>
+          <textarea id="observacao" placeholder="Ex: Carro fazendo barulho na roda dianteira ao frear ou luz da injeção acesa..."></textarea>
+        </div>
+
+        <button class="btn-wpp" onclick="enviarWhatsApp()">Enviar Pedido de Orçamento no WhatsApp</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Localização -->
+  <section style="padding-top: 0;">
+    <div class="container">
+      <div class="location-card">
+        <div>
+          <h3 style="margin-bottom: 6px;">📍 Onde Estamos</h3>
+          <p style="color: var(--muted); font-size: 0.95rem;">Av. Principal, Quadra 12, Lote 05 — Atendimento de Seg a Sex (08h às 18h) e Sáb (08h às 13h)</p>
+        </div>
+        <a href="https://maps.google.com" target="_blank" class="btn-outline">Abrir no Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      AutoTech Mecânica — Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script>
+    function enviarWhatsApp() {
+      // TROQUE O NÚMERO ABAIXO PELO WHATSAPP DA OFICINA (com DDI 55 + DDD)
+      const telefoneOficina = '5561999999999';
+
+      const nome = document.getElementById('nome').value.trim() || 'Não informado';
+      const veiculo = document.getElementById('veiculo').value.trim() || 'Não informado';
+      const porte = document.getElementById('porte').value;
+      const pagamento = document.getElementById('pagamento').value;
+      const horario = document.getElementById('horario').value.trim() || 'A combinar';
+      const obs = document.getElementById('observacao').value.trim() || 'Nenhuma';
+
+      const selecionados = [];
+      document.querySelectorAll('.services-check input[type="checkbox"]:checked').forEach((item) => {
+        selecionados.push(item.value);
+      });
+
+      const listaServicos = selecionados.length > 0 ? selecionados.join(', ') : 'Avaliação geral';
+
+      const mensagem =
+`Olá! Gostaria de solicitar um orçamento na oficina:
+
+*Nome:* ${nome}
+*Veículo:* ${veiculo}
+*Categoria:* ${porte}
+*Serviços:* ${listaServicos}
+*Pagamento:* ${pagamento}
+*Horário preferido:* ${horario}
+*Observação:* ${obs}`;
+
+      const url = `https://wa.me/${telefoneOficina}?text=${encodeURIComponent(mensagem)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
